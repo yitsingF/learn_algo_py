@@ -47,5 +47,27 @@ def main():
     move_nth_node(test, 2)
 
 
+def reverse_list(start,n):
+    head=start
+    check=start
+    cur = head
+    for i in range(n-1):
+        check=check.next
+        if check is None:
+            return head,None,cur
+    end=head
+    head=head.next
+    for i in range(n-1):
+        tmp=head
+        head=head.next
+        tmp.next=cur
+        cur=tmp
+    end.next=None
+    return head,cur,end
+
+
+
+
+
 if __name__ == '__main__':
     main()
