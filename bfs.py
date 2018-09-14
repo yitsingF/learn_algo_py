@@ -3,14 +3,15 @@ def sort_matrix(mat):
     row, col = len(mat), len(mat[0])
     q=Queue(row*col)
 
+    visited=set()
     # enqueue the start point
     for i in range(row):
         for j in range(col):
             if mat[i][j] == 0:
                 q.put((i,j))
-                visited=set()
+
                 visited.add((i,j))
-                bfs_mat(mat,visited,q)
+    bfs_mat(mat,visited,q)
     return mat
 
 INF_INT = 2**31 -1
@@ -44,8 +45,8 @@ def bfs_mat(mat,visited,q):
 
 def adjanct_block(i, j, m, n):
     # generate block candate
-    it_1 = [x for x in [i - 1, i + 1] if x > 0 and x < m]
-    it_2 = [x for x in [j - 1, j + 1] if x > 0 and x < n]
+    it_1 = [x for x in [i - 1, i + 1] if x > -1 and x < m]
+    it_2 = [x for x in [j - 1, j + 1] if x > -1 and x < n]
     adjance = [(x, j) for x in it_1]
     adjance += [(i, x) for x in it_2]
     return adjance

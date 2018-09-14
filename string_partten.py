@@ -65,9 +65,31 @@ def reverse_list(start,n):
     end.next=None
     return head,cur,end
 
+def valid_string(s):
+    starter = {"(","{","["}
+    ender = {")","}","]"}
+    l=[]
+    for i in range(len(s)):
+        c = s[i]
+        if c in starter:
+            l.append(c)
+        elif c in ender:
+            if len(s) ==0:
+                return False
+            tail = l.pop()
+            if c == ")" and tail == "(":
+                continue
+            if c == "]" and tail == "[":
+                continue
+            if c == "}" and tail == "{":
+                continue
+            return False
+    l.count()
+    return True
+
 
 
 
 
 if __name__ == '__main__':
-    main()
+    valid_string("[]")
